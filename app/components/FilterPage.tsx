@@ -18,7 +18,10 @@ const FilterPage: React.FC = () => {
     const [selectedCar, setSelectedCar] = useState<string | null>(null);
     const [selectedYear, setSelectedYear] = useState<string | null>(null);
 
+   
+   
     useEffect(() => {
+        
         async function fetchCars() {
             const res = await fetch('https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json');
             const data = await res.json();
@@ -28,9 +31,12 @@ const FilterPage: React.FC = () => {
         }
         fetchCars()
     }, []);
+
+
     return (
         <main className='h-[80vh] flex flex-col justify-between items-center gap-6 mt-6 overflow-hidden'>
-            <section className='flex flex-row justify-between items-center gap-6 md:w-[80%] sm:flex sm:flex-row sm:overflow-hidden'>
+            {/* <section className=' sm:flex sm:flex-col sm:overflow-hidden flex flex-row justify-between items-center gap-6 '> */}
+            <section className=' md:flex md:flex-row md:overflow-hidden gap-6 justify-around'>
                 <Select title='Car Names' option='Select a car'
                     value={selectedCar}
                     onChange={(e: any) => setSelectedCar(e.target.value)}
